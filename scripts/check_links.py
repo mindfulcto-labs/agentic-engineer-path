@@ -24,8 +24,9 @@ TIMEOUT = 30
 RETRIES = 3
 # Some hosts return 403 to any non-browser client. Treat these codes as
 # "alive" because the resource exists; only connection failures and 404-class
-# codes should fail the build.
-ACCEPTABLE_CODES = {200, 301, 302, 303, 307, 308, 403, 405, 429, 999}
+# codes should fail the build. EUR-Lex answers automated clients with 202
+# and a browser check page, so 202 also counts as alive.
+ACCEPTABLE_CODES = {200, 202, 301, 302, 303, 307, 308, 403, 405, 429, 999}
 
 
 def collect_links() -> dict[str, list[str]]:
